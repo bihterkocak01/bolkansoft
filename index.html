@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOLKANSOFT — Software & Digital Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;color:#333;background:#fff;overflow-x:hidden;}
+
+.top-bar{background:#1a1a2e;padding:8px 0;font-size:12px;color:#aaa;letter-spacing:.04em;}
+.top-bar .inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;}
+.top-bar a{color:#aaa;text-decoration:none;transition:color .2s;}
+.top-bar a:hover{color:#fff;}
+
+nav{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.logo{font-family:'Raleway',sans-serif;font-weight:600;font-size:22px;letter-spacing:.06em;text-decoration:none;}
+.logo .b{color:#8b3fc8;font-weight:600;}.logo .s{color:#4a90d9;font-weight:600;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{color:#555;font-size:12px;font-weight:700;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;padding:0 16px;line-height:70px;transition:color .2s;border-bottom:3px solid transparent;display:block;}
+.nav-links a:hover{color:#2d2d6b;border-bottom-color:#5b8af5;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:#333;transition:all .3s;}
+
+#hero{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0d0d2b 0%,#162050 50%,#0a2a50 100%);}
+.hero-overlay{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=50') center/cover;opacity:.12;}
+.hero-content{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:100px 32px;width:100%;}
+.hero-content h1{font-family:'Raleway',sans-serif;font-size:clamp(28px,4.5vw,52px);font-weight:300;color:#fff;line-height:1.25;margin-bottom:16px;letter-spacing:.02em;}
+.hero-content h1 strong{font-weight:700;color:#7eb3ff;}
+.hero-content p{color:rgba(255,255,255,.65);font-size:15px;font-weight:300;max-width:480px;line-height:1.85;margin-bottom:32px;}
+.btn-hero{background:#5b8af5;color:#fff;padding:12px 32px;border-radius:2px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s;display:inline-block;}
+.btn-hero:hover{background:#3a6ee8;}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
+.sec-w{background:#fff;padding:80px 0;}
+.sec-l{background:#f7f8fc;padding:80px 0;}
+.sec-d{background:#1a1a2e;padding:80px 0;color:#fff;}
+
+.sec-head{text-align:center;margin-bottom:52px;}
+.sec-head .lbl{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#5b8af5;margin-bottom:10px;}
+.sec-head h2{font-family:'Raleway',sans-serif;font-size:clamp(22px,3vw,36px);font-weight:700;color:#1a1a2e;margin-bottom:14px;letter-spacing:-.01em;}
+.sec-d .sec-head h2{color:#fff;}
+.sec-head p{color:#777;font-size:14px;max-width:500px;margin:0 auto;line-height:1.8;font-weight:300;}
+.sec-d .sec-head p{color:rgba(255,255,255,.55);}
+.divider{width:40px;height:3px;background:linear-gradient(90deg,#5b8af5,#a855f7);margin:14px auto 0;border-radius:2px;}
+
+.mvg-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#e5e8f0;border:1px solid #e5e8f0;border-radius:3px;overflow:hidden;}
+.mvg-item{background:#fff;padding:40px 28px;text-align:center;transition:background .2s;}
+.mvg-item:hover{background:#f5f7ff;}
+.mvg-ico{width:54px;height:54px;margin:0 auto 18px;background:#eef1ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.mvg-item h3{font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1a1a2e;margin-bottom:12px;}
+.mvg-item p{color:#777;font-size:14px;line-height:1.75;font-weight:300;}
+
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.svc-card{padding:32px 26px;border:1px solid #e5e8f0;border-radius:3px;transition:all .25s;background:#fff;}
+.svc-card:hover{border-color:#5b8af5;box-shadow:0 6px 28px rgba(91,138,245,.1);transform:translateY(-3px);}
+.svc-card .ico{font-size:26px;margin-bottom:14px;display:block;}
+.svc-card h3{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:10px;}
+.svc-card p{color:#777;font-size:13px;line-height:1.75;font-weight:300;}
+
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px 60px;}
+.sk{margin-bottom:22px;}
+.sk-top{display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;margin-bottom:7px;}
+.sk-top span:last-child{color:#5b8af5;}
+.sk-track{height:3px;background:#e5e8f0;border-radius:2px;overflow:hidden;}
+.sk-fill{height:100%;background:linear-gradient(90deg,#5b8af5,#a855f7);border-radius:2px;transition:width 1.4s cubic-bezier(.4,0,.2,1);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;}
+.card{border:1px solid #e5e8f0;border-radius:3px;padding:30px 26px;background:#fff;transition:all .25s;}
+.card:hover{box-shadow:0 6px 28px rgba(0,0,0,.08);transform:translateY(-3px);border-color:#c8d4f8;}
+.ctag{display:inline-block;background:#eef1ff;color:#5b8af5;padding:3px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;}
+.card h3{font-family:'Raleway',sans-serif;font-size:18px;font-weight:700;color:#1a1a2e;margin-bottom:9px;}
+.card p{color:#777;font-size:13px;line-height:1.75;font-weight:300;margin-bottom:18px;}
+.clink{color:#5b8af5;font-size:11px;font-weight:700;text-decoration:none;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:5px;transition:gap .2s;}
+.clink:hover{gap:9px;}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start;}
+.c-info .lbl{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#5b8af5;margin-bottom:12px;}
+.c-info h3{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;text-transform:uppercase;letter-spacing:.04em;}
+.c-info p{color:rgba(255,255,255,.55);font-size:14px;line-height:1.8;margin-bottom:24px;font-weight:300;}
+.c-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.c-row a{color:rgba(255,255,255,.65);text-decoration:none;font-size:14px;transition:color .2s;}
+.c-row a:hover{color:#5b8af5;}
+.form-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg{margin-bottom:12px;}
+.fg input,.fg textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:2px;padding:11px 15px;color:#fff;font-family:'Open Sans',sans-serif;font-size:14px;transition:border-color .2s;resize:vertical;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.3);}
+.fg input:focus,.fg textarea:focus{outline:none;border-color:#5b8af5;}
+.fg textarea{min-height:100px;}
+.btn-send{background:#5b8af5;color:#fff;border:none;padding:12px 32px;border-radius:2px;width:100%;font-family:'Open Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-send:hover{background:#3a6ee8;}
+
+footer{background:#12122a;padding:48px 0 20px;}
+.ft-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:36px;}
+.ft-logo{font-family:'Raleway',sans-serif;font-weight:800;font-size:19px;color:#fff;letter-spacing:.08em;text-decoration:none;}
+
+.ft-desc{color:rgba(255,255,255,.35);font-size:13px;margin-top:10px;max-width:260px;line-height:1.7;font-weight:300;}
+.ft-col h4{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5b8af5;margin-bottom:14px;}
+.ft-col a{display:block;color:rgba(255,255,255,.45);font-size:13px;text-decoration:none;margin-bottom:8px;transition:color .2s;}
+.ft-col a:hover{color:#fff;}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.ft-bottom p,.ft-bottom a{color:rgba(255,255,255,.3);font-size:12px;text-decoration:none;transition:color .2s;}
+.ft-bottom a:hover{color:#5b8af5;}
+
+@media(max-width:768px){
+  .top-bar .inner,.nav-inner,.wrap{padding:0 16px;}
+  .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;flex-direction:column;border-top:1px solid #eee;box-shadow:0 8px 24px rgba(0,0,0,.1);}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:14px 20px;line-height:1.4;border-bottom:1px solid #f0f0f0;border-left:none;}
+  .hamburger{display:flex;}
+  .hero-content{padding:70px 16px;}
+  .sec-w,.sec-l,.sec-d{padding:56px 0;}
+  .skills-grid,.contact-grid,.form-pair{grid-template-columns:1fr;}
+  .ft-inner{flex-direction:column;}
+  .ft-bottom{flex-direction:column;text-align:center;}
+}
+
+
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#333;border:none;border-radius:0;overflow:hidden;max-width:100%;margin:0 auto;}
+.logo-card{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;padding:28px 16px;min-height:130px;text-decoration:none;transition:background .2s;border:none;}
+.logo-card:hover{background:#f0f3ff;}
+.logo-card img{max-width:100%;max-height:72px;object-fit:contain;}
+.logo-name{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;color:#1a1a2e;text-align:center;margin-bottom:4px;}
+.logo-sub{font-size:11px;color:#999;text-align:center;font-weight:300;}
+.logo-text{font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;color:#555;text-align:center;padding:10px;}
+.logo-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;color:#555;text-align:center;padding:10px;}
+
+.fi{opacity:1;transform:translateY(0);transition:opacity .6s ease,transform .6s ease;}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="inner">
+    <a href="/cdn-cgi/l/email-protection#89eae6e7fde8eafdc9ebe6e5e2e8e7fae6effda7eae6e4">✉ <span class="__cf_email__" data-cfemail="f4979b9a80959780b4969b989f959a879b9280da979b99">[email&#160;protected]</span></a>
+    <span>© 2026 BOLKANSOFT</span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><span class="b">BOLKAN</span><span class="s">SOFT</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Think Different,<br><strong>Make a Difference</strong><br>In The World!</h1>
+    <p>We will establish new models with our partners who believe in us. Unique, efficient and creative software solutions for every need.</p>
+    <a href="#contact" class="btn-hero">Get In Touch</a>
+  </div>
+</section>
+
+<section id="about" class="sec-w">
+  <div class="wrap">
+    <div class="sec-head fi">
+      <div class="lbl">Who We Are</div>
+      <h2>We Are Bolkansoft</h2>
+      <div class="divider"></div>
+      <p>In addition to our own original projects, we are a company that provides software solutions for organizations or people. We shape our projects in line with the demands of our partners and always try to make the 'Best'.</p>
+    </div>
+    <div class="mvg-row fi">
+      <div class="mvg-item">
+        <div class="mvg-ico">🖥️</div>
+        <h3>Mission</h3>
+        <p>We develop efficient and fast solutions for all our customers' needs using our interactive, creative and advanced talents. Our goal is to be a brand among the best with the support of technology.</p>
+      </div>
+      <div class="mvg-item">
+        <div class="mvg-ico">🌐</div>
+        <h3>Vision</h3>
+        <p>By putting emphasis on productivity, dynamism, quality, original ideas and positive perspectives, our aim is to obtain long-term relationships in the evolving business world.</p>
+      </div>
+      <div class="mvg-item">
+        <div class="mvg-ico">🎯</div>
+        <h3>Our Goals</h3>
+        <p>Our goal is to become a 'Software House' managing long-term and temporary jobs with experienced staff — producing special, permanent solutions for your company.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="sec-l">
+  <div class="wrap">
+    <div class="sec-head fi">
+      <div class="lbl">What We Do</div>
+      <h2>Our Services</h2>
+      <div class="divider"></div>
+      <p>From concept to deployment, we cover the full spectrum of modern software development.</p>
+    </div>
+    <div class="svc-grid fi">
+      <div class="svc-card"><span class="ico">🖥️</span><h3>Web Design & Software</h3><p>We produce the most effective solutions combining excellent design for businesses — static, dynamic, internal web software and online sales platforms.</p></div>
+      <div class="svc-card"><span class="ico">🛒</span><h3>E-Commerce Softwares</h3><p>We develop professional e-commerce softwares depending on our customers' needs, making online sales seamless and effective.</p></div>
+      <div class="svc-card"><span class="ico">📝</span><h3>Web Content Management</h3><p>Full CMS solutions — users can add video, image or text contents and manage authorization on websites produced by us.</p></div>
+      <div class="svc-card"><span class="ico">📱</span><h3>Mobile Applications</h3><p>iOS and Android apps built with React Native, Flutter, or Capacitor. Native performance with cross-platform efficiency.</p></div>
+      <div class="svc-card"><span class="ico">🤖</span><h3>Artificial Intelligence</h3><p>AI-powered features, image recognition, NLP and automation tools integrated seamlessly into your products and workflows.</p></div>
+      <div class="svc-card"><span class="ico">🔧</span><h3>Maintenance & Back-Up</h3><p>Creating software is only the beginning. We develop, update, renew and back up software according to your changing needs.</p></div>
+    </div>
+
+    <div style="margin-top:72px;">
+      <div class="sec-head fi">
+        <div class="lbl">Expertise</div>
+        <h2>Technical Skills</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="skills-grid fi">
+        <div>
+          <div class="sk"><div class="sk-top"><span>Artificial Intelligence</span><span>80%</span></div><div class="sk-track"><div class="sk-fill" style="width:80%"></div></div></div>
+          <div class="sk"><div class="sk-top"><span>Mobile Application</span><span>95%</span></div><div class="sk-track"><div class="sk-fill" style="width:95%"></div></div></div>
+          <div class="sk"><div class="sk-top"><span>HTML / CSS</span><span>95%</span></div><div class="sk-track"><div class="sk-fill" style="width:95%"></div></div></div>
+        </div>
+        <div>
+          <div class="sk"><div class="sk-top"><span>jQuery / JS / Flutter</span><span>80%</span></div><div class="sk-track"><div class="sk-fill" style="width:80%"></div></div></div>
+          <div class="sk"><div class="sk-top"><span>ASP.NET / Web API</span><span>96%</span></div><div class="sk-track"><div class="sk-fill" style="width:96%"></div></div></div>
+          <div class="sk"><div class="sk-top"><span>Blockchain</span><span>87%</span></div><div class="sk-track"><div class="sk-fill" style="width:87%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="sec-w">
+  <div class="wrap">
+    <div class="sec-head fi">
+      <div class="lbl">Own Products</div>
+      <h2>Products We Own</h2>
+      <div class="divider"></div>
+      <p>Digital products built and operated by Bolkansoft.</p>
+    </div>
+    <div class="cards-grid fi">
+      <div class="card"><span class="ctag">Restaurant Tech</span><h3>İyi Masa</h3><p>A restaurant reservation platform with visual table selection — customers pick their exact table like choosing an airline seat. Scalable globally for any market.</p><a href="https://iyimasa.com" target="_blank" class="clink">Visit iyimasa.com →</a></div>
+      <div class="card"><span class="ctag">Mobile Game</span><h3>Merge Life: Animal Evolution</h3><p>A hyper-casual mobile game where you drop and merge animals through evolution — from microbe to caveman. Capacitor & Matter.js physics.</p><a href="#" class="clink">Coming Soon →</a></div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="sec-l">
+  <div class="wrap">
+    <div class="sec-head fi">
+      <div class="lbl">Portfolio</div>
+      <h2>Recent Projects</h2>
+      <div class="divider"></div>
+      <p>A selection of products we've built and shipped for our partners.</p>
+    </div>
+    <div class="logo-grid fi">
+      <a href="https://www.landoscope.com/" target="_blank" class="logo-card">
+        <div class="logo-name">Landoscope</div>
+        <div class="logo-sub">Investment on the Map</div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.bolkansoft.scantranslate" target="_blank" class="logo-card">
+        <div class="logo-name">Photo Translate</div>
+        <div class="logo-sub">Scan &amp; Translate</div>
+      </a>
+      <a href="https://www.kaatmarket.com/" target="_blank" class="logo-card">
+        <div class="logo-name">KaatMarket</div>
+        <div class="logo-sub">kaatmarket.com</div>
+      </a>
+      <a href="#" class="logo-card">
+        <div class="logo-name">Bolkan Kağıt</div>
+        <div class="logo-sub">Sanayi &amp; Ticaret</div>
+      </a>
+      <a href="#" class="logo-card">
+        <div class="logo-name">Next Life</div>
+        <div class="logo-sub">Start Again</div>
+      </a>
+      <a href="#" class="logo-card">
+        <div class="logo-name">KuponTara</div>
+        <div class="logo-sub">Deals &amp; Coupons</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="sec-d">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="c-info fi">
+        <div class="lbl">Get In Touch</div>
+        <h3>Contact Us</h3>
+        <p>For further information please contact us using the address below. We will get back to you as soon as possible.</p>
+        <div class="c-row"><span>✉</span><a href="/cdn-cgi/l/email-protection#492a26273d282a3d092b26252228273a262f3d672a2624"><span class="__cf_email__" data-cfemail="67040809130604132705080b0c0609140801134904080a">[email&#160;protected]</span></a></div>
+      </div>
+      <div class="fi">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#5b8af5;margin-bottom:20px;">Write Us</p>
+        <form action="mailto:contact@bolkansoft.com" method="POST">
+          <div class="form-pair">
+            <div class="fg"><input type="text" placeholder="Name *" required></div>
+            <div class="fg"><input type="email" placeholder="E-Mail *" required></div>
+          </div>
+          <div class="fg"><input type="text" placeholder="Surname *"></div>
+          <div class="fg"><textarea placeholder="Message *"></textarea></div>
+          <button type="submit" class="btn-send">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-inner">
+      <div>
+        <a href="#" class="ft-logo"><span style="color:#8b3fc8">BOLKAN</span><span style="color:#4a90d9">SOFT</span></a>
+        <p class="ft-desc">We are a company that provides software solutions for organizations or people. We shape our projects in line with the demands of our partners and always try to make the 'Best'.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Navigation</h4>
+        <a href="#about">Home</a>
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <a href="/cdn-cgi/l/email-protection#4d2e2223392c2e390d2f2221262c233e222b39632e2220"><span class="__cf_email__" data-cfemail="197a76776d787a6d597b76757278776a767f6d377a7674">[email&#160;protected]</span></a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2026 BOLKANSOFT. All Rights Reserved.</p>
+      <a href="/privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflar
